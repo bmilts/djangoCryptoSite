@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<div class="jumbotron jumbotron-fluid">
+  		<div class="container">
+		    <h1 class="display-4">Crypto Address</h1>
+		      <strong>Address: </strong>{{ address.address }}<br/>
+		      <strong>Received: </strong>{{ address.total_received }}<br/>
+		      <strong>Sent: </strong>{{ address.total_sent }}<br/>
+		      <strong>Balance: </strong>{{ address.balance }}<br/>
+		      <strong>Final Balance: </strong>{{ address.final_balance }}<br/>
+		      <strong>Number Transactions: </strong>{{ address.final_n_tx }}<br/>
+		        
+		  </div>
+	</div>
+	<br/>
+
+	<!-- {{ address }} -->
+{% endblock %}

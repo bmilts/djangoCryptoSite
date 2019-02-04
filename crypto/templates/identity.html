@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+		  <h1 class="display-4">KYC ID Checker</h1>
+		  <p class="lead">A quick reference for know your customer identity documents by country.</p>
+		  <p class="lead">Disclaimer, this is intended as an overall guide and not a legally supported document, use at your own risk.</p>
+</div>
+<br/>
+<div>
+	<form class="form-inline my-2 my-lg-0">
+          {% csrf_token %}
+          <input class="form-control mr-sm-2" type="search" placeholder="ID Search" aria-label="Search" type="text" id="myInput" onkeyup="myFunction()">
+          <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+<br/>
+<div>
+  <table id="myTable" class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Country</th>
+      <th scope="col">Document Types</th>
+      <th scope="col">Document Example</th>
+      <th scope="col">Alternate Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>USA</td>
+      <td>Passport Card, Drivers License</td>
+      <td><img src="https://travel.state.gov/content/dam/passports/passport-images/Passport%20Card%20Front.jpg" alt="" height="220" width="300"></td>
+      <td><img src="https://s.hdnux.com/photos/37/12/56/8170401/3/920x920.jpg" alt="" height="220" width="300"></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td></td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+<script>
+function myFunction() {
+  // Declare variables 
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    } 
+  }
+}
+</script>
+
+{% endblock %}
